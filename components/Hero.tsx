@@ -36,6 +36,21 @@ export default function Hero() {
         boxSizing: "border-box",
       }}
     >
+      {/* ── Background grid ── */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          backgroundImage: `
+      linear-gradient(to right, #e8e8e8 1px, transparent 1px),
+      linear-gradient(to bottom, #e8e8e8 1px, transparent 1px)
+    `,
+          backgroundSize: "60px 60px",
+          opacity: 0.4,
+          zIndex: 0,
+          pointerEvents: "none",
+        }}
+      />
       {/* ── TOP: "Hi! I am" + Full-width name ── */}
       <div
         style={{
