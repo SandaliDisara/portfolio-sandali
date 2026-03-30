@@ -1,17 +1,29 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { useState } from "react";
 
 const links = ["Home", "Works", "About", "Contact"];
 
 export default function Navbar() {
   const [active, setActive] = useState("Home");
+  const [hidden, setHidden] = useState(false);
+  const [lastY, setLastY] = useState(0);
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    if (latest > lastY && latest > 80) {
+      setHidden(true);
+    } else {
+      setHidden(false);
+    }
+    setLastY(latest);
+  });
 
   return (
     <motion.nav
       initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      animate={hidden ? { y: "-120%", opacity: 0 } : { opacity: 1, y: 0 }}
+      transition={{ duration: 0.35, ease: "easeInOut" }}
       className="fixed top-6 left-1/2 -translate-x-1/2 z-50"
     >
       <div

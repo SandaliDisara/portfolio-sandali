@@ -354,7 +354,7 @@ export default function Hero() {
                   whiteSpace: "nowrap",
                 }}
               >
-                Take a Tour
+                Contact Me
               </motion.a>
             </motion.div>
 
