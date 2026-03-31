@@ -39,7 +39,7 @@ export default function About() {
       id="about"
       style={{
         background: "#ffffff",
-        padding: "150px 100px",
+        padding: "150px 100px 60px",
         display: "grid",
         gridTemplateColumns: "420px 1fr",
         gap: "80px",
