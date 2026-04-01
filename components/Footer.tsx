@@ -3,11 +3,31 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const socialLinks = [
-  { name: "Behance", icon: "/icons/behance.svg", href: "#" },
-  { name: "Dribbble", icon: "/icons/dribble.svg", href: "#" },
-  { name: "LinkedIn", icon: "/icons/linkedin.svg", href: "#" },
-  { name: "Instagram", icon: "/icons/instagram.svg", href: "#" },
-  { name: "YouTube", icon: "/icons/youtube.svg", href: "#" },
+  {
+    name: "Behance",
+    icon: "/icons/behance.svg",
+    href: "https://www.behance.net/SandaliDisaraArt",
+  },
+  {
+    name: "Dribbble",
+    icon: "/icons/dribble.svg",
+    href: "https://dribbble.com/Sandali_Disara",
+  },
+  {
+    name: "LinkedIn",
+    icon: "/icons/linkedin.svg",
+    href: "https://www.linkedin.com/in/sandalidisara",
+  },
+  {
+    name: "Instagram",
+    icon: "/icons/instagram.svg",
+    href: "https://www.instagram.com/islandtree_creations/",
+  },
+  {
+    name: "YouTube",
+    icon: "/icons/youtube.svg",
+    href: "https://www.youtube.com/@SandaliDisara",
+  },
 ];
 
 export default function Footer() {
@@ -193,6 +213,8 @@ export default function Footer() {
                 <motion.a
                   key={s.name}
                   href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   initial={{ opacity: 0, scale: 0.5 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}

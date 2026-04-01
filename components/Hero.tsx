@@ -3,12 +3,32 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const socialLinks = [
-  { name: "Behance", icon: "/icons/behance.svg", href: "#" },
-  { name: "Dribbble", icon: "/icons/dribble.svg", href: "#" },
-  { name: "LinkedIn", icon: "/icons/linkedin.svg", href: "#" },
-  { name: "Instagram", icon: "/icons/instagram.svg", href: "#" },
-  { name: "YouTube", icon: "/icons/youtube.svg", href: "#" },
-  { name: "Gmail", icon: "/icons/gmail.svg", href: "#" },
+  {
+    name: "Behance",
+    icon: "/icons/behance.svg",
+    href: "https://www.behance.net/SandaliDisaraArt",
+  },
+  {
+    name: "Dribbble",
+    icon: "/icons/dribble.svg",
+    href: "https://dribbble.com/Sandali_Disara",
+  },
+  {
+    name: "LinkedIn",
+    icon: "/icons/linkedin.svg",
+    href: "https://www.linkedin.com/in/sandalidisara/",
+  },
+  {
+    name: "Instagram",
+    icon: "/icons/instagram.svg",
+    href: "https://www.instagram.com/islandtree_creations/",
+  },
+  {
+    name: "YouTube",
+    icon: "/icons/youtube.svg",
+    href: "https://www.youtube.com/@SandaliDisara",
+  },
+  { name: "Gmail", icon: "/icons/gmail.svg", href: "#contact" },
 ];
 
 const fadeUp = (delay: number) => ({
@@ -443,6 +463,10 @@ export default function Hero() {
                   <motion.a
                     key={s.name}
                     href={s.href}
+                    target={s.href.startsWith("#") ? "_self" : "_blank"}
+                    rel={
+                      s.href.startsWith("#") ? undefined : "noopener noreferrer"
+                    }
                     initial={{ opacity: 0, scale: 0.5 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.9 + i * 0.08 }}
@@ -508,6 +532,8 @@ export default function Hero() {
               <motion.a
                 key={s.name}
                 href={s.href}
+                target={s.href.startsWith("#") ? "_self" : "_blank"}
+                rel={s.href.startsWith("#") ? undefined : "noopener noreferrer"}
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.6 + i * 0.08 }}
