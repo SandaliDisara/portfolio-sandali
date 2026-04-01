@@ -53,9 +53,16 @@ const works = [
   },
 ];
 
-// splits into rows of 3
 const rows = works.reduce((acc: (typeof works)[], item, i) => {
   const rowIndex = Math.floor(i / 3);
+  if (!acc[rowIndex]) acc[rowIndex] = [];
+  acc[rowIndex].push(item);
+  return acc;
+}, []) as (typeof works)[];
+
+// Mobile rows of 2
+const mobileRows = works.reduce((acc: (typeof works)[], item, i) => {
+  const rowIndex = Math.floor(i / 2);
   if (!acc[rowIndex]) acc[rowIndex] = [];
   acc[rowIndex].push(item);
   return acc;
@@ -64,12 +71,13 @@ const rows = works.reduce((acc: (typeof works)[], item, i) => {
 function WorkCard({ item, index }: { item: (typeof works)[0]; index: number }) {
   return (
     <motion.div
+      className="work-card"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.75, delay: index * 0.12, ease: "easeOut" }}
       style={{
-        flex: "0 0 calc(31% )",
+        flex: "0 0 calc(31%)",
         minWidth: 0,
         aspectRatio: "4/5",
         borderRadius: "3px",
@@ -109,92 +117,181 @@ function WorkCard({ item, index }: { item: (typeof works)[0]; index: number }) {
   );
 }
 
-export default function Works() {
+function MobileWorkCard({
+  item,
+  index,
+}: {
+  item: (typeof works)[0];
+  index: number;
+}) {
   return (
-    <section
-      id="works"
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.75, delay: index * 0.12, ease: "easeOut" }}
       style={{
-        background: "#ffffff",
-        paddingBottom: "0px",
+        flex: "1 1 0",
+        minWidth: 0,
+        aspectRatio: "3/4",
+        borderRadius: "3px",
         overflow: "hidden",
+        background: "#D9D9D9",
+        position: "relative",
       }}
     >
-      {/* Intro text */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7 }}
-        style={{
-          textAlign: "center",
-          padding: "120px 100px 100px",
-        }}
-      >
-        <p
+      {item.media && item.type === "image" && (
+        <img
+          src={item.media}
+          alt={item.title}
           style={{
-            fontFamily: "var(--font-space)",
-            fontSize: "clamp(16px, 1.5vw, 22px)",
-            color: "#818181",
-            lineHeight: 1.7,
-            maxWidth: "600px",
-            margin: "0 auto",
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            display: "block",
           }}
-        >
-          <Image
-            src="/icons/computer.svg"
-            alt=""
-            width={30}
-            height={30}
-            style={{
-              display: "inline-block",
-              verticalAlign: "middle",
-              marginRight: "8px",
-            }}
-          />{" "}
-          Based in{" "}
-          <strong style={{ color: "#1A1A1A", fontWeight: 700 }}>
-            Sri Lanka,
-          </strong>{" "}
-          I design brands and digital experiences through a blend of creativity,
-          strategy, and user-centered thinking.{" "}
-          <Image
-            src="/icons/shapes.svg"
-            alt=""
-            width={30}
-            height={30}
-            style={{
-              display: "inline-block",
-              verticalAlign: "middle",
-              marginLeft: "6px",
-            }}
-          />
-        </p>
-      </motion.div>
+        />
+      )}
+      {item.media && item.type === "video" && (
+        <video
+          src={item.media}
+          autoPlay
+          muted
+          loop
+          playsInline
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            display: "block",
+          }}
+        />
+      )}
+    </motion.div>
+  );
+}
 
-      {/* Grid — all rows identical */}
-      <div
+export default function Works() {
+  return (
+    <>
+      <style>{`
+        .works-desktop { display: flex; }
+        .works-mobile  { display: none; }
+
+        @media (max-width: 768px) {
+          .works-desktop { display: none !important; }
+          .works-mobile  { display: flex !important; }
+
+          .works-intro {
+            padding: 60px 24px 80px !important;
+          }
+
+          .works-intro p {
+            font-size: 15px !important;
+          }
+        }
+      `}</style>
+
+      <section
+        id="works"
         style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "3.5vw",
-          padding: "0",
+          background: "#ffffff",
+          paddingBottom: "0px",
+          overflow: "hidden",
         }}
       >
-        {rows.map((row, rowIndex) => (
-          <motion.div
-            key={rowIndex}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.4, delay: rowIndex * 0.08 }}
-            style={{ display: "flex", justifyContent: "space-between" }}
+        {/* Intro text */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="works-intro"
+          style={{ textAlign: "center", padding: "120px 100px 100px" }}
+        >
+          <p
+            style={{
+              fontFamily: "var(--font-space)",
+              fontSize: "clamp(16px, 1.5vw, 22px)",
+              color: "#818181",
+              lineHeight: 1.7,
+              maxWidth: "600px",
+              margin: "0 auto",
+            }}
           >
-            {row.map((item, i) => (
-              <WorkCard key={item.id} item={item} index={i} />
-            ))}
-          </motion.div>
-        ))}
-      </div>
-    </section>
+            <Image
+              src="/icons/computer.svg"
+              alt=""
+              width={30}
+              height={30}
+              style={{
+                display: "inline-block",
+                verticalAlign: "middle",
+                marginRight: "8px",
+              }}
+            />{" "}
+            Based in{" "}
+            <strong style={{ color: "#1A1A1A", fontWeight: 700 }}>
+              Sri Lanka,
+            </strong>{" "}
+            I design brands and digital experiences through a blend of
+            creativity, strategy, and user-centered thinking.{" "}
+            <Image
+              src="/icons/shapes.svg"
+              alt=""
+              width={30}
+              height={30}
+              style={{
+                display: "inline-block",
+                verticalAlign: "middle",
+                marginLeft: "6px",
+              }}
+            />
+          </p>
+        </motion.div>
+
+        {/* ── DESKTOP grid — 3 per row ── */}
+        <div
+          className="works-desktop"
+          style={{ flexDirection: "column", gap: "3.5vw", padding: "0" }}
+        >
+          {rows.map((row, rowIndex) => (
+            <motion.div
+              key={rowIndex}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.4, delay: rowIndex * 0.08 }}
+              style={{ display: "flex", justifyContent: "space-between" }}
+            >
+              {row.map((item, i) => (
+                <WorkCard key={item.id} item={item} index={i} />
+              ))}
+            </motion.div>
+          ))}
+        </div>
+
+        {/* ── MOBILE grid — 2 per row ── */}
+        <div
+          className="works-mobile"
+          style={{ flexDirection: "column", gap: "8px", padding: "0" }}
+        >
+          {mobileRows.map((row, rowIndex) => (
+            <motion.div
+              key={rowIndex}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.4, delay: rowIndex * 0.08 }}
+              style={{ display: "flex", gap: "8px" }}
+            >
+              {row.map((item, i) => (
+                <MobileWorkCard key={item.id} item={item} index={i} />
+              ))}
+            </motion.div>
+          ))}
+        </div>
+      </section>
+    </>
   );
 }
