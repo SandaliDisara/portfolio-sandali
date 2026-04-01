@@ -61,12 +61,12 @@ export default function Hero() {
         }
         @media (max-width: 768px) {
           .hero-section {
-            height: auto;
-            min-height: 100vh;
-            max-height: none;
-            padding: 80px 24px 40px;
-            overflow: visible;
-          }
+  height: auto;
+  min-height: 100vh;
+  max-height: none;
+  padding: 40px 24px 40px;
+  overflow: visible;
+}
           .hero-name-wrapper {
             text-align: center !important;
             align-items: center !important;
@@ -81,21 +81,26 @@ export default function Hero() {
             text-align: center !important;
           }
           .hero-badge {
-  bottom: -10px !important;
-  right: -10px !important;
-  transform: rotate(-6deg) !important;
+  position: relative !important;
+  bottom: auto !important;
+  right: auto !important;
+  transform: none !important;
+  display: block !important;
+  margin: 18px auto 0 auto !important;
+  width: fit-content !important;
+  text-align: center !important;
 }
           .hero-three-col {
             display: none !important;
           }
           .hero-mobile-stack {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            margin-top: 50px;
-            padding-bottom: 40px;
-          }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: 30px;
+  padding-bottom: 0px;
+}
         }
       `}</style>
 
@@ -579,7 +584,7 @@ export default function Hero() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.3, ease: "easeOut" }}
               style={{
-                width: "90%",
+                width: "1000%",
                 maxWidth: "340px",
                 zIndex: 1,
                 alignSelf: "flex-end",
