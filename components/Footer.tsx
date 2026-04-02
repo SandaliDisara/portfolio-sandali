@@ -123,7 +123,7 @@ export default function Footer() {
 
           .footer-badge {
             top: -30px !important;
-            right: 150px !important;
+            right: 24px !important;
             width: 72px !important;
             height: 72px !important;
           }
@@ -160,7 +160,7 @@ export default function Footer() {
             Let's Connect
           </motion.h2>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "1px" }}>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -171,7 +171,7 @@ export default function Footer() {
                 fontSize: "clamp(14px, 1.2vw, 20px)",
                 fontWeight: 700,
                 color: "#A87BB4",
-                margin: 0,
+                margin: "0 0 2px 0",
               }}
             >
               Say Hi!
@@ -192,6 +192,7 @@ export default function Footer() {
                 textDecoration: "none",
                 display: "block",
                 transition: "color 0.2s",
+                marginTop: "-4px",
               }}
             >
               sandalicreates@gmail.com

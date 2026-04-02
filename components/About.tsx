@@ -46,19 +46,19 @@ export default function About() {
           align-items: start;
           overflow: hidden;
         }
-
         .about-left {
           position: relative;
           height: 720px;
         }
-
         .about-right {
           display: flex;
           flex-direction: column;
           gap: 48px;
         }
-
         .about-mobile-visual {
+          display: none;
+        }
+        .period-mobile {
           display: none;
         }
 
@@ -68,15 +68,12 @@ export default function About() {
             grid-template-columns: 1fr !important;
             gap: 32px !important;
           }
-
           .about-left {
             display: none !important;
           }
-
           .about-right {
             gap: 16px !important;
           }
-
           .about-mobile-visual {
             display: flex;
             justify-content: center;
@@ -85,17 +82,17 @@ export default function About() {
             height: 280px;
             margin-bottom: 0px;
           }
-
           .about-bio-text {
             text-align: center !important;
           }
-
           .about-exp-heading {
             justify-content: center !important;
           }
-
           .about-exp-period {
             display: none !important;
+          }
+          .period-mobile {
+            display: block !important;
           }
         }
       `}</style>
@@ -109,7 +106,6 @@ export default function About() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          {/* Real photo */}
           <div
             style={{
               position: "absolute",
@@ -132,7 +128,6 @@ export default function About() {
             />
           </div>
 
-          {/* About Me badge */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8, rotate: -6 }}
             whileInView={{ opacity: 1, scale: 1, rotate: -6 }}
@@ -156,7 +151,6 @@ export default function About() {
             About Me
           </motion.div>
 
-          {/* Full 3D avatar */}
           <motion.div
             animate={{ y: [0, -8, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -182,7 +176,6 @@ export default function About() {
         <div className="about-right">
           {/* ── MOBILE ONLY visual ── */}
           <div className="about-mobile-visual">
-            {/* Photo circle */}
             <div
               style={{
                 position: "absolute",
@@ -206,7 +199,6 @@ export default function About() {
               />
             </div>
 
-            {/* About Me badge */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8, rotate: -6 }}
               whileInView={{ opacity: 1, scale: 1, rotate: -6 }}
@@ -232,7 +224,6 @@ export default function About() {
               About Me
             </motion.div>
 
-            {/* 3D avatar */}
             <motion.div
               animate={{ y: [0, -8, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -303,7 +294,6 @@ export default function About() {
               marginTop: "32px",
             }}
           >
-            {/* Section heading */}
             <div
               className="about-exp-heading"
               style={{
@@ -326,7 +316,6 @@ export default function About() {
               </span>
             </div>
 
-            {/* Experience rows */}
             <div style={{ display: "flex", flexDirection: "column" }}>
               {experiences.map((exp, i) => (
                 <motion.div
@@ -338,7 +327,7 @@ export default function About() {
                   style={{
                     display: "flex",
                     alignItems: "center",
-                    gap: "20px",
+                    gap: "16px",
                     padding: "20px 0",
                     borderBottom:
                       i < experiences.length - 1 ? "1px solid #F0F0F0" : "none",
@@ -349,7 +338,7 @@ export default function About() {
                     style={{
                       width: "48px",
                       height: "48px",
-                      borderRadius: "10px",
+                      borderRadius: "6px",
                       overflow: "hidden",
                       flexShrink: 0,
                       background: "#f5f5f5",
@@ -386,14 +375,14 @@ export default function About() {
                         fontFamily: "var(--font-karla)",
                         fontSize: "clamp(12px, 0.9vw, 15px)",
                         color: "#818181",
-                        margin: "3px 0 0",
+                        margin: "2px 0 0",
                       }}
                     >
                       {exp.company}
                     </p>
                   </div>
 
-                  {/* Period */}
+                  {/* Desktop period — single line */}
                   <p
                     className="about-exp-period"
                     style={{
@@ -406,6 +395,32 @@ export default function About() {
                   >
                     {exp.period}
                   </p>
+
+                  {/* Mobile period — two lines */}
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-end",
+                      flexShrink: 0,
+                    }}
+                  >
+                    {exp.period.split(" - ").map((part, idx) => (
+                      <span
+                        key={idx}
+                        className="period-mobile"
+                        style={{
+                          fontFamily: "var(--font-karla)",
+                          fontSize: "11px",
+                          color: "#AAAAAA",
+                          lineHeight: 1.6,
+                          whiteSpace: "nowrap",
+                        }}
+                      >
+                        {part}
+                      </span>
+                    ))}
+                  </div>
                 </motion.div>
               ))}
             </div>
