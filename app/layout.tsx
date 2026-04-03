@@ -29,16 +29,16 @@ export default function RootLayout({
     <html lang="en" style={{ background: "#ffffff" }}>
       <head>
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-EBFS14WD60"
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-EBFS14WD60');
-          `}
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+  `}
         </Script>
       </head>
       <body
