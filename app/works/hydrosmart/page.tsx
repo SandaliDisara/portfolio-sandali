@@ -12,10 +12,31 @@ export default function HydroSmart() {
         fontFamily: "var(--font-karla)",
       }}
     >
+      <style>{`
+        .hs-back        { padding: 32px 60px 0 !important; }
+        .hs-hero        { padding: 100px 60px 60px !important; }
+        .hs-prob-cards  { padding: 36px !important; grid-template-columns: 1fr 1fr !important; }
+        .hs-dt-row      { flex-direction: row !important; }
+        .hs-persona-top { flex-direction: row !important; }
+        .hs-persona-cards { grid-template-columns: 1fr 1fr !important; }
+
+        @media (max-width: 768px) {
+          .hs-back       { padding: 20px 24px 0 !important; }
+          .hs-hero       { padding: 72px 24px 40px !important; }
+          .hs-prob-cards { padding: 20px !important; grid-template-columns: 1fr !important; }
+          .hs-dt-row     { flex-direction: column !important; align-items: flex-start !important; gap: 24px !important; }
+          .hs-dt-line    { display: none !important; }
+          .hs-dt-item    { flex-direction: row !important; align-items: center !important; gap: 16px !important; flex: unset !important; width: 100% !important; }
+          .hs-dt-text    { text-align: left !important; max-width: unset !important; }
+          .hs-persona-top  { flex-direction: column !important; }
+          .hs-persona-cards { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
+
       {/* ── Back button ── */}
       <div
+        className="hs-back"
         style={{
-          padding: "32px 60px 0",
           position: "fixed",
           top: 0,
           left: 0,
@@ -46,8 +67,8 @@ export default function HydroSmart() {
 
       {/* ── Hero area ── */}
       <div
+        className="hs-hero"
         style={{
-          padding: "100px 60px 60px",
           maxWidth: "1200px",
           margin: "0 auto",
         }}
@@ -113,7 +134,6 @@ export default function HydroSmart() {
               margin: 0,
             }}
           >
-            {/* Paste your description here */}
             The Smart Water Management System is a mobile-based solution
             designed to help rural households in Sri Lanka manage their
             rainwater harvesting tanks more effectively. Hydrosmart app provides
@@ -124,6 +144,7 @@ export default function HydroSmart() {
             efficient, and sustainable water usage.
           </p>
         </motion.div>
+
         {/* ── Problem Definition Section ── */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -132,7 +153,6 @@ export default function HydroSmart() {
           style={{ marginTop: "80px" }}
         >
           <div style={{ maxWidth: "1080px" }}>
-            {/* Section label */}
             <p
               style={{
                 fontFamily: "var(--font-karla)",
@@ -147,7 +167,6 @@ export default function HydroSmart() {
               Problem Definition
             </p>
 
-            {/* Heading */}
             <h2
               style={{
                 fontFamily: "var(--font-space)",
@@ -161,7 +180,6 @@ export default function HydroSmart() {
               What challenges do rural households face?
             </h2>
 
-            {/* Description */}
             <p
               style={{
                 fontFamily: "var(--font-karla)",
@@ -180,13 +198,12 @@ export default function HydroSmart() {
 
           {/* Cards container */}
           <div
+            className="hs-prob-cards"
             style={{
               background: "#F0F7FF",
               border: "1.5px dashed #A8CDEF",
               borderRadius: "16px",
-              padding: "36px",
               display: "grid",
-              gridTemplateColumns: "1fr 1fr",
               gap: "20px",
             }}
           >
@@ -247,6 +264,7 @@ export default function HydroSmart() {
             ))}
           </div>
         </motion.div>
+
         {/* ── Research Approach Section ── */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -254,7 +272,6 @@ export default function HydroSmart() {
           transition={{ duration: 0.7, delay: 0.7, ease: "easeOut" }}
           style={{ marginTop: "80px" }}
         >
-          {/* Section label */}
           <p
             style={{
               fontFamily: "var(--font-karla)",
@@ -269,7 +286,6 @@ export default function HydroSmart() {
             Research Approach
           </p>
 
-          {/* Heading */}
           <h2
             style={{
               fontFamily: "var(--font-space)",
@@ -283,7 +299,6 @@ export default function HydroSmart() {
             How did we understand the problem?
           </h2>
 
-          {/* Description */}
           <p
             style={{
               fontFamily: "var(--font-karla)",
@@ -302,6 +317,7 @@ export default function HydroSmart() {
           {/* Design Thinking stages */}
           <div style={{ padding: "0 4px", marginTop: "80px" }}>
             <div
+              className="hs-dt-row"
               style={{
                 display: "flex",
                 alignItems: "flex-start",
@@ -311,6 +327,7 @@ export default function HydroSmart() {
             >
               {/* Connecting line */}
               <div
+                className="hs-dt-line"
                 style={{
                   position: "absolute",
                   top: "16px",
@@ -334,6 +351,7 @@ export default function HydroSmart() {
               ].map((item, i) => (
                 <div
                   key={i}
+                  className="hs-dt-item"
                   style={{
                     display: "flex",
                     flexDirection: "column",
@@ -382,6 +400,7 @@ export default function HydroSmart() {
                   </p>
 
                   <p
+                    className="hs-dt-text"
                     style={{
                       fontFamily: "var(--font-karla)",
                       fontSize: "clamp(11px, 0.8vw, 13px)",
@@ -399,6 +418,7 @@ export default function HydroSmart() {
             </div>
           </div>
         </motion.div>
+
         {/* ── User Persona Section ── */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -406,7 +426,6 @@ export default function HydroSmart() {
           transition={{ duration: 0.7, delay: 0.8, ease: "easeOut" }}
           style={{ marginTop: "80px" }}
         >
-          {/* Section label */}
           <p
             style={{
               fontFamily: "var(--font-karla)",
@@ -421,7 +440,6 @@ export default function HydroSmart() {
             User Persona
           </p>
 
-          {/* Heading */}
           <h2
             style={{
               fontFamily: "var(--font-space)",
@@ -437,6 +455,7 @@ export default function HydroSmart() {
 
           {/* Top row — photo + tags + bio */}
           <div
+            className="hs-persona-top"
             style={{
               display: "flex",
               alignItems: "flex-start",
@@ -517,9 +536,9 @@ export default function HydroSmart() {
 
           {/* Bottom two cards */}
           <div
+            className="hs-persona-cards"
             style={{
               display: "grid",
-              gridTemplateColumns: "1fr 1fr",
               gap: "24px",
             }}
           >
@@ -660,6 +679,7 @@ export default function HydroSmart() {
             </div>
           </div>
         </motion.div>
+
         {/* ── User Flow Section ── */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -667,7 +687,6 @@ export default function HydroSmart() {
           transition={{ duration: 0.7, delay: 0.9, ease: "easeOut" }}
           style={{ marginTop: "80px" }}
         >
-          {/* Section label */}
           <p
             style={{
               fontFamily: "var(--font-karla)",
@@ -682,7 +701,6 @@ export default function HydroSmart() {
             User Flow
           </p>
 
-          {/* Heading */}
           <h2
             style={{
               fontFamily: "var(--font-space)",
@@ -696,7 +714,6 @@ export default function HydroSmart() {
             How do users navigate the app?
           </h2>
 
-          {/* Description */}
           <p
             style={{
               fontFamily: "var(--font-karla)",
@@ -734,6 +751,7 @@ export default function HydroSmart() {
             />
           </div>
         </motion.div>
+
         {/* ── Wireframes Section ── */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -741,7 +759,6 @@ export default function HydroSmart() {
           transition={{ duration: 0.7, delay: 1.0, ease: "easeOut" }}
           style={{ marginTop: "80px" }}
         >
-          {/* Section label */}
           <p
             style={{
               fontFamily: "var(--font-karla)",
@@ -756,7 +773,6 @@ export default function HydroSmart() {
             Wireframes
           </p>
 
-          {/* Heading */}
           <h2
             style={{
               fontFamily: "var(--font-space)",
@@ -770,7 +786,6 @@ export default function HydroSmart() {
             Sketching the structure before the details
           </h2>
 
-          {/* Description */}
           <p
             style={{
               fontFamily: "var(--font-karla)",
@@ -806,14 +821,14 @@ export default function HydroSmart() {
             />
           </div>
         </motion.div>
+
         {/* ── High Fidelity Mockups Section ── */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 1.1, ease: "easeOut" }}
-          style={{ marginTop: "80px" }}
+          style={{ marginTop: "80px", paddingBottom: "80px" }}
         >
-          {/* Section label */}
           <p
             style={{
               fontFamily: "var(--font-karla)",
@@ -828,7 +843,6 @@ export default function HydroSmart() {
             High Fidelity Mockups
           </p>
 
-          {/* Heading */}
           <h2
             style={{
               fontFamily: "var(--font-space)",
@@ -842,14 +856,12 @@ export default function HydroSmart() {
             Bringing the design to life
           </h2>
 
-          {/* Description */}
           <p
             style={{
               fontFamily: "var(--font-karla)",
               fontSize: "clamp(15px, 1.2vw, 18px)",
               color: "#818181",
               lineHeight: 1.8,
-
               maxWidth: "1080px",
             }}
           >
