@@ -85,12 +85,37 @@ export default function HydroSmart() {
             color: "#1A1A1A",
             lineHeight: 1.2,
             maxWidth: "900px",
-            margin: "0 0 48px 0",
+            margin: "0 0 16px 0",
           }}
         >
           HydroSmart — Smart Water Management System for Rainwater Harvesting
           Tanks
         </motion.h1>
+
+        {/* Tag */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
+          style={{ marginBottom: "48px" }}
+        >
+          <span
+            style={{
+              fontFamily: "var(--font-karla)",
+              fontSize: "13px",
+              fontWeight: 600,
+              color: "#1A1A1A",
+              background: "#ffffff",
+              border: "1.5px solid #c9c9c9",
+              borderRadius: "999px",
+              padding: "6px 16px",
+              display: "inline-block",
+              letterSpacing: "0.3px",
+            }}
+          >
+            Product Design & Research
+          </span>
+        </motion.div>
 
         {/* Cover image */}
         <motion.div
