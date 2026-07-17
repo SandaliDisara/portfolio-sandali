@@ -32,10 +32,10 @@ const works = [
     title: "Web Experience",
     category: "UI/UX",
     media:
-      "https://res.cloudinary.com/dna2qtnfv/video/upload/v1774857092/beach_export.mp4",
-    type: "video",
-    slug: "https://www.instagram.com/p/DRHB0xgElyE/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-    cursorColor: "#283563",
+      "https://res.cloudinary.com/dna2qtnfv/image/upload/v1784279233/mokobot_jbgjvs.png",
+    type: "image",
+    slug: "/works/mokobot",
+    cursorColor: "#e27831",
     disabled: false,
   },
   {
@@ -45,9 +45,9 @@ const works = [
     media:
       "https://res.cloudinary.com/dna2qtnfv/video/upload/v1774861212/sanas_v2_z5azgs.mp4",
     type: "video",
-    slug: null,
-    cursorColor: "#F4A261",
-    disabled: true,
+    slug: "https://www.instagram.com/p/DRhPW9RjEAH/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    cursorColor: "#136633",
+    disabled: false,
   },
   {
     id: 5,
@@ -56,20 +56,20 @@ const works = [
     media:
       "https://res.cloudinary.com/dna2qtnfv/image/upload/v1774863763/xiaobao_mfctxd.png",
     type: "image",
-    slug: null,
-    cursorColor: "#E76F51",
-    disabled: true,
+    slug: "https://www.instagram.com/p/DWT3fykjFPL/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    cursorColor: "#6d1d09",
+    disabled: false,
   },
   {
     id: 6,
-    title: "Company Promo",
-    category: "Web UI",
+    title: "Web Experience",
+    category: "UI/UX",
     media:
-      "https://res.cloudinary.com/dna2qtnfv/video/upload/v1774864894/Astroweb_babcut.mp4",
+      "https://res.cloudinary.com/dna2qtnfv/video/upload/v1774857092/beach_export.mp4",
     type: "video",
-    slug: null,
-    cursorColor: "#1c1e1e",
-    disabled: true,
+    slug: "https://www.instagram.com/p/DRHB0xgElyE/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    cursorColor: "#283563",
+    disabled: false,
   },
 ];
 

@@ -664,7 +664,7 @@ export default function MokoBot() {
               {
                 name: "Nishadi, 29",
                 image:
-                  "https://res.cloudinary.com/dna2qtnfv/image/upload/v1784266875/nishadiPersona_s2wdq1.png",
+                  "https://res.cloudinary.com/dna2qtnfv/image/upload/v1784278570/nishadiPersona_zfjo3k.png",
                 bio: "AMarketing executive, Colombo. Buys from office vending machines daily.",
                 accent: "#f09e7e",
                 goal: "Get something back for repeat purchases - discounts, perks, or rewards that feel worth earning.",
