@@ -19,6 +19,8 @@ export default function MokoBot() {
         .mb-dt-row      { flex-direction: row !important; }
         .mb-persona-top { flex-direction: row !important; }
         .mb-persona-cards { grid-template-columns: 1fr 1fr !important; }
+        .mb-flow-row    { flex-direction: row !important; }
+        .mb-flow-arrow  { transform: rotate(0deg) !important; }
 
         @media (max-width: 768px) {
           .mb-back       { padding: 20px 24px 0 !important; }
@@ -30,6 +32,8 @@ export default function MokoBot() {
           .mb-dt-text    { text-align: left !important; max-width: unset !important; }
           .mb-persona-top  { flex-direction: column !important; }
           .mb-persona-cards { grid-template-columns: 1fr !important; }
+          .mb-flow-row    { flex-direction: column !important; }
+          .mb-flow-arrow  { transform: rotate(90deg) !important; }
         }
       `}</style>
 
@@ -624,6 +628,453 @@ export default function MokoBot() {
               buyer and an engagement-driven loyalist. Both need the experience
               to feel instant and rewarding.
             </p>
+          </div>
+
+          {/* Persona cards */}
+          <div
+            className="mb-persona-cards"
+            style={{
+              display: "grid",
+              gap: "24px",
+            }}
+          >
+            {[
+              {
+                name: "Sahan, 24",
+                image:
+                  "https://res.cloudinary.com/dna2qtnfv/image/upload/v1784266968/sahanPersoan_cnl5hs.png",
+                bio: "University student, Colombo. Grabs drinks and snacks between lectures.",
+                accent: "#1d1d1d",
+                goal: "Pay quickly without cash, find the nearest machine stocking what he wants.",
+                frustration:
+                  "Walks to a machine only to find it empty or cash-only.",
+                habit:
+                  "Already uses FriMi and LankaQR daily. Expects cashless everywhere.",
+              },
+              {
+                name: "Nishadi, 29",
+                image:
+                  "https://res.cloudinary.com/dna2qtnfv/image/upload/v1784266875/nishadiPersona_s2wdq1.png",
+                bio: "AMarketing executive, Colombo. Buys from office vending machines daily.",
+                accent: "#6B9FD4",
+                goal: "Get something back for repeat purchases - discounts, perks, or rewards that feel worth earning.",
+                frustration:
+                  "Buys from the same machine every day with zero recognition or loyalty benefit.",
+                habit:
+                  "Loyal to apps that reward her and already engages with loyalty programmes.",
+              },
+            ].map((persona) => (
+              <div
+                key={persona.name}
+                style={{
+                  border: "1.5px solid #E8E8E8",
+                  borderRadius: "16px",
+                  padding: "32px 28px",
+                  background: "#ffffff",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  textAlign: "center",
+                }}
+              >
+                {/* Avatar */}
+                <div
+                  style={{
+                    width: "88px",
+                    height: "88px",
+                    borderRadius: "50%",
+                    overflow: "hidden",
+                    marginBottom: "16px",
+                    flexShrink: 0,
+                    border: "2px solid #E8E8E8",
+                  }}
+                >
+                  <Image
+                    src={persona.image}
+                    alt={persona.name}
+                    width={88}
+                    height={88}
+                    style={{
+                      objectFit: "cover",
+                      width: "100%",
+                      height: "100%",
+                    }}
+                  />
+                </div>
+
+                {/* Name */}
+                <p
+                  style={{
+                    fontFamily: "var(--font-space)",
+                    fontSize: "17px",
+                    fontWeight: 600,
+                    color: "#1A1A1A",
+                    margin: "0 0 6px 0",
+                  }}
+                >
+                  {persona.name}
+                </p>
+
+                {/* Small description */}
+                <p
+                  style={{
+                    fontFamily: "var(--font-karla)",
+                    fontSize: "clamp(13px, 1vw, 15px)",
+                    color: "#818181",
+                    lineHeight: 1.7,
+                    maxWidth: "320px",
+                    margin: 0,
+                  }}
+                >
+                  {persona.bio}
+                </p>
+
+                {/* Separator */}
+                <div
+                  style={{
+                    width: "100%",
+                    height: "1px",
+                    background: "#EFEFEF",
+                    margin: "24px 0",
+                  }}
+                />
+
+                {/* Goal / Frustration / Habit */}
+                <div
+                  style={{
+                    width: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "0px",
+                  }}
+                >
+                  {[
+                    { label: "Goal", text: persona.goal },
+                    { label: "Frustration", text: persona.frustration },
+                    { label: "Habit", text: persona.habit },
+                  ].map((item, i) => (
+                    <div
+                      key={item.label}
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "8px",
+                        padding: "14px 0",
+                        borderTop: i > 0 ? "1px solid #EFEFEF" : "none",
+                      }}
+                    >
+                      {/* Filled tag */}
+                      <span
+                        style={{
+                          fontFamily: "var(--font-karla)",
+                          fontSize: "10px",
+                          fontWeight: 700,
+                          color: "#ffffff",
+                          background: "#1A1A1A",
+                          borderRadius: "999px",
+                          padding: "4px 12px",
+                          letterSpacing: "1px",
+                          textTransform: "uppercase",
+                          whiteSpace: "nowrap",
+                          display: "inline-block",
+                          alignSelf: "flex-start",
+                        }}
+                      >
+                        {item.label}
+                      </span>
+
+                      {/* Text */}
+                      <p
+                        style={{
+                          fontFamily: "var(--font-karla)",
+                          fontSize: "clamp(13px, 1vw, 15px)",
+                          color: "#818181",
+                          lineHeight: 1.7,
+                          margin: 0,
+                          textAlign: "left",
+                        }}
+                      >
+                        {item.text}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* ── Branding & Visual Identity Section ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.6, ease: "easeOut" }}
+          style={{ marginTop: "80px" }}
+        >
+          <p
+            style={{
+              fontFamily: "var(--font-karla)",
+              fontSize: "13px",
+              fontWeight: 700,
+              color: "#cc6b1c",
+              letterSpacing: "2px",
+              textTransform: "uppercase",
+              margin: "0 0 16px 0",
+            }}
+          >
+            Branding & Visual Identity
+          </p>
+
+          <h2
+            style={{
+              fontFamily: "var(--font-space)",
+              fontSize: "clamp(22px, 2.8vw, 38px)",
+              fontWeight: 500,
+              color: "#1A1A1A",
+              lineHeight: 1.25,
+              margin: "0 0 20px 0",
+            }}
+          >
+            Giving MokoBot a distinct visual voice
+          </h2>
+
+          <p
+            style={{
+              fontFamily: "var(--font-karla)",
+              fontSize: "clamp(15px, 1.2vw, 18px)",
+              color: "#818181",
+              lineHeight: 1.8,
+              margin: "0 0 48px 0",
+              maxWidth: "1080px",
+            }}
+          >
+            The brand identity was built around a bold, energetic personality
+            that feels playful at the machine and trustworthy in the app —
+            translated across logo, color, and type into a consistent system.
+          </p>
+
+          {/* Branding image */}
+          <div
+            style={{
+              width: "100%",
+              borderRadius: "12px",
+              border: "1.5px dashed #d4d4d4",
+              overflow: "hidden",
+            }}
+          >
+            <Image
+              src="https://res.cloudinary.com/dna2qtnfv/image/upload/v1784273303/BrandingMokobot_w7wutr.png"
+              alt="MokoBot Branding & Visual Identity"
+              width={1200}
+              height={675}
+              style={{
+                width: "100%",
+                height: "auto",
+                display: "block",
+              }}
+            />
+          </div>
+        </motion.div>
+
+        {/* ── Key User Flows Section ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.6, ease: "easeOut" }}
+          style={{ marginTop: "80px" }}
+        >
+          <p
+            style={{
+              fontFamily: "var(--font-karla)",
+              fontSize: "13px",
+              fontWeight: 700,
+              color: "#cc6b1c",
+              letterSpacing: "2px",
+              textTransform: "uppercase",
+              margin: "0 0 16px 0",
+            }}
+          >
+            Key User Flows
+          </p>
+
+          <h2
+            style={{
+              fontFamily: "var(--font-space)",
+              fontSize: "clamp(22px, 2.8vw, 38px)",
+              fontWeight: 500,
+              color: "#1A1A1A",
+              lineHeight: 1.25,
+              margin: "0 0 20px 0",
+            }}
+          >
+            How users move through the app
+          </h2>
+
+          <p
+            style={{
+              fontFamily: "var(--font-karla)",
+              fontSize: "clamp(15px, 1.2vw, 18px)",
+              color: "#818181",
+              lineHeight: 1.8,
+              margin: "0 0 40px 0",
+              maxWidth: "1080px",
+            }}
+          >
+            Three core journeys shaped the interaction design — each one mapped
+            step by step to keep the path from intent to reward as short as
+            possible.
+          </p>
+
+          {/* Flows container */}
+          <div
+            style={{
+              background: "#f8f8f8",
+              borderRadius: "16px",
+              border: "1.5px dashed #d4d4d4",
+              padding: "40px",
+              display: "flex",
+              flexDirection: "column",
+              gap: "40px",
+            }}
+          >
+            {[
+              {
+                label: "Flow 01 — First-time purchase with QR",
+                steps: [
+                  { title: "Register", desc: "Create account in seconds" },
+                  { title: "Scan QR", desc: "Link app to the machine" },
+                  {
+                    title: "Browse & pay",
+                    desc: "Pick item, apply promo & pay",
+                  },
+                  {
+                    title: "Points credited",
+                    desc: "Reward lands instantly",
+                    final: true,
+                  },
+                ],
+              },
+              {
+                label: "Flow 02 — Rewards & mini-games",
+                steps: [
+                  {
+                    title: "Home screen",
+                    desc: "Points, offers & games in one view",
+                  },
+                  {
+                    title: "Play a game",
+                    desc: "Quick games under 60 seconds",
+                  },
+                  {
+                    title: "Earn points",
+                    desc: "Complete level, unlock promo code",
+                  },
+                  {
+                    title: "Redeem",
+                    desc: "Apply code at checkout",
+                    final: true,
+                  },
+                ],
+              },
+              {
+                label: "Flow 03 — Finding a machine",
+                steps: [
+                  { title: "Search product", desc: "Type what you want" },
+                  {
+                    title: "Map with stock",
+                    desc: "Machines with your item highlighted",
+                  },
+                  { title: "Navigate", desc: "Google Maps directions" },
+                  {
+                    title: "Indoor nav",
+                    desc: "VR walkthrough inside malls",
+                    final: true,
+                  },
+                ],
+              },
+            ].map((flow) => (
+              <div key={flow.label}>
+                <p
+                  style={{
+                    fontFamily: "var(--font-karla)",
+                    fontSize: "12px",
+                    fontWeight: 700,
+                    color: "#25721e",
+                    letterSpacing: "1.5px",
+                    textTransform: "uppercase",
+                    margin: "0 0 16px 0",
+                  }}
+                >
+                  {flow.label}
+                </p>
+
+                <div
+                  className="mb-flow-row"
+                  style={{
+                    display: "flex",
+                    alignItems: "stretch",
+                    gap: "12px",
+                  }}
+                >
+                  {flow.steps.map((step, i) => (
+                    <div
+                      key={step.title}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        flex: 1,
+                        gap: "12px",
+                      }}
+                    >
+                      <div
+                        style={{
+                          flex: 1,
+                          background: step.final ? "#0E3B36" : "#e4e4e4",
+                          borderRadius: "10px",
+                          padding: "18px 16px",
+                        }}
+                      >
+                        <p
+                          style={{
+                            fontFamily: "var(--font-space)",
+                            fontSize: "clamp(13px, 1vw, 15px)",
+                            fontWeight: 600,
+                            color: step.final ? "#ffffff" : "#292929",
+                            margin: "0 0 6px 0",
+                          }}
+                        >
+                          {step.title}
+                        </p>
+                        <p
+                          style={{
+                            fontFamily: "var(--font-karla)",
+                            fontSize: "clamp(11px, 0.85vw, 13px)",
+                            color: step.final ? "#8FD9C4" : "#616161",
+                            lineHeight: 1.5,
+                            margin: 0,
+                          }}
+                        >
+                          {step.desc}
+                        </p>
+                      </div>
+
+                      {i < flow.steps.length - 1 && (
+                        <span
+                          className="mb-flow-arrow"
+                          style={{
+                            color: "#6A6A6A",
+                            fontSize: "16px",
+                            flexShrink: 0,
+                          }}
+                        >
+                          →
+                        </span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </motion.div>
       </div>

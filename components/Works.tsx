@@ -12,9 +12,9 @@ const works = [
     media:
       "https://res.cloudinary.com/dna2qtnfv/image/upload/v1774860286/artsb_cover.png",
     type: "image",
-    slug: null,
-    cursorColor: "#A87BB4",
-    disabled: true,
+    slug: "https://www.behance.net/gallery/223843021/ARTSB-Portfolio-Web-Design",
+    cursorColor: "#ce94bc",
+    disabled: false,
   },
   {
     id: 2,
@@ -25,6 +25,7 @@ const works = [
     type: "video",
     slug: "/works/hydrosmart",
     cursorColor: "#6B9FD4",
+    disabled: false,
   },
   {
     id: 3,
@@ -33,9 +34,9 @@ const works = [
     media:
       "https://res.cloudinary.com/dna2qtnfv/video/upload/v1774857092/beach_export.mp4",
     type: "video",
-    slug: null,
-    cursorColor: "#5f5b3f",
-    disabled: true,
+    slug: "https://www.instagram.com/p/DRHB0xgElyE/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    cursorColor: "#283563",
+    disabled: false,
   },
   {
     id: 4,
@@ -135,6 +136,8 @@ function CustomCursor({ color }: { color: string }) {
   );
 }
 
+const isExternalUrl = (url: string) => /^https?:\/\//.test(url);
+
 function CardMedia({ item }: { item: (typeof works)[0] }) {
   return (
     <>
@@ -218,9 +221,12 @@ function WorkCard({ item, index }: { item: (typeof works)[0]; index: number }) {
   );
 
   if (item.slug) {
+    const external = isExternalUrl(item.slug);
     return (
       <Link
         href={item.slug}
+        target={external ? "_blank" : undefined}
+        rel={external ? "noopener noreferrer" : undefined}
         style={{
           flex: "0 0 calc(31%)",
           textDecoration: "none",
@@ -265,9 +271,12 @@ function MobileWorkCard({
   );
 
   if (item.slug) {
+    const external = isExternalUrl(item.slug);
     return (
       <Link
         href={item.slug}
+        target={external ? "_blank" : undefined}
+        rel={external ? "noopener noreferrer" : undefined}
         style={{ flex: "1 1 0", textDecoration: "none", display: "block" }}
       >
         {card}
