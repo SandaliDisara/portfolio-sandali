@@ -21,6 +21,7 @@ export default function MokoBot() {
         .mb-persona-cards { grid-template-columns: 1fr 1fr !important; }
         .mb-flow-row    { flex-direction: row !important; }
         .mb-flow-arrow  { transform: rotate(0deg) !important; }
+        .mb-goals-grid  { grid-template-columns: repeat(3, 1fr) !important; }
 
         @media (max-width: 768px) {
           .mb-back       { padding: 20px 24px 0 !important; }
@@ -34,6 +35,7 @@ export default function MokoBot() {
           .mb-persona-cards { grid-template-columns: 1fr !important; }
           .mb-flow-row    { flex-direction: column !important; }
           .mb-flow-arrow  { transform: rotate(90deg) !important; }
+          .mb-goals-grid  { grid-template-columns: 1fr !important; }
         }
       `}</style>
 
@@ -238,9 +240,9 @@ export default function MokoBot() {
             </p>
 
             <div
+              className="mb-goals-grid"
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(3, 1fr)",
                 gap: "16px",
               }}
             >
@@ -274,10 +276,18 @@ export default function MokoBot() {
                 >
                   <span
                     style={{
+                      width: "32px",
+                      height: "32px",
+                      borderRadius: "50%",
+                      background: "#cc6b1c",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      flexShrink: 0,
                       fontFamily: "var(--font-karla)",
                       fontSize: "13px",
                       fontWeight: 700,
-                      color: "#cc6b1c",
+                      color: "#ffffff",
                       letterSpacing: "1px",
                     }}
                   >
@@ -644,7 +654,7 @@ export default function MokoBot() {
                 image:
                   "https://res.cloudinary.com/dna2qtnfv/image/upload/v1784266968/sahanPersoan_cnl5hs.png",
                 bio: "University student, Colombo. Grabs drinks and snacks between lectures.",
-                accent: "#1d1d1d",
+                accent: "#f09e7e",
                 goal: "Pay quickly without cash, find the nearest machine stocking what he wants.",
                 frustration:
                   "Walks to a machine only to find it empty or cash-only.",
@@ -656,7 +666,7 @@ export default function MokoBot() {
                 image:
                   "https://res.cloudinary.com/dna2qtnfv/image/upload/v1784266875/nishadiPersona_s2wdq1.png",
                 bio: "AMarketing executive, Colombo. Buys from office vending machines daily.",
-                accent: "#6B9FD4",
+                accent: "#f09e7e",
                 goal: "Get something back for repeat purchases - discounts, perks, or rewards that feel worth earning.",
                 frustration:
                   "Buys from the same machine every day with zero recognition or loyalty benefit.",
@@ -769,9 +779,9 @@ export default function MokoBot() {
                           fontFamily: "var(--font-karla)",
                           fontSize: "10px",
                           fontWeight: 700,
-                          color: "#ffffff",
-                          background: "#1A1A1A",
-                          borderRadius: "999px",
+                          color: "#cc6b1c",
+                          background: "#fcf3eb",
+                          borderRadius: "12px",
                           padding: "4px 12px",
                           letterSpacing: "1px",
                           textTransform: "uppercase",
@@ -1075,6 +1085,78 @@ export default function MokoBot() {
                 </div>
               </div>
             ))}
+          </div>
+        </motion.div>
+
+        {/* ── UI Flow Section ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.6, ease: "easeOut" }}
+          style={{ marginTop: "80px" }}
+        >
+          <p
+            style={{
+              fontFamily: "var(--font-karla)",
+              fontSize: "13px",
+              fontWeight: 700,
+              color: "#cc6b1c",
+              letterSpacing: "2px",
+              textTransform: "uppercase",
+              margin: "0 0 16px 0",
+            }}
+          >
+            UI Showcase
+          </p>
+
+          <h2
+            style={{
+              fontFamily: "var(--font-space)",
+              fontSize: "clamp(22px, 2.8vw, 38px)",
+              fontWeight: 500,
+              color: "#1A1A1A",
+              lineHeight: 1.25,
+              margin: "0 0 20px 0",
+            }}
+          >
+            From screen to screen
+          </h2>
+
+          <p
+            style={{
+              fontFamily: "var(--font-karla)",
+              fontSize: "clamp(15px, 1.2vw, 18px)",
+              color: "#818181",
+              lineHeight: 1.8,
+              margin: "0 0 48px 0",
+              maxWidth: "1080px",
+            }}
+          >
+            Every screen designed with one question in mind, does this feel
+            instant, rewarding, and effortless? Here's how that translated
+            across
+          </p>
+
+          {/* UI Flow image */}
+          <div
+            style={{
+              width: "100%",
+              borderRadius: "12px",
+              border: "1.5px dashed #d4d4d4",
+              overflow: "hidden",
+            }}
+          >
+            <Image
+              src="https://res.cloudinary.com/dna2qtnfv/image/upload/v1784276629/UI_flow_ctjnfx.png"
+              alt="MokoBot UI Flow"
+              width={1200}
+              height={675}
+              style={{
+                width: "100%",
+                height: "auto",
+                display: "block",
+              }}
+            />
           </div>
         </motion.div>
       </div>
